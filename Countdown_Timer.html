@@ -1,0 +1,99 @@
+<!DOCTYPE HTML> 
+<html> 
+<head> 
+<style> 
+body{ 
+	text-align: center; 
+    background: #FFFFFF; 
+    font-family: sans-serif; 
+    font-weight: 100; 
+}
+
+h1{ 
+  color: #000000; 
+  font-weight: 100; 
+  font-size: 40px; 
+  margin: 40px 0px 20px; 
+} 
+
+#clockdiv{ 
+    font-family: sans-serif; 
+    color: #000; 
+    display: inline-block; 
+    font-weight: 100; 
+    text-align: center; 
+    font-size: 15px;
+} 
+
+#clockdiv > div{ 
+    padding: 20px;
+    color: #B4B4B4;
+    background: #FFFFFF; 
+    display: inline-block; 
+    border-style: solid;
+    border-width: 1px;
+    border-color: #B4B4B4;
+    border-radius: 3px; 
+    width: 60px;
+    font-weight: bold;    
+    margin-right: 10px; 
+}
+
+#clockdiv div > span{ 
+    font-size: 30px;
+    font-weight: normal;
+    color: #000000;
+}
+</style> 
+</head> 
+
+<body> 
+<h1>Countdown Timer</h1> 
+<div id="clockdiv"> 
+  <div> 
+    <span id="day"></span> 
+    <div>Days</div> 
+  </div> 
+  <div> 
+    <span id="hour"></span> 
+    <div>Hours</div> 
+  </div> 
+  <div> 
+    <span id="minute"></span> 
+    <div>Minutes</div> 
+  </div> 
+  <div> 
+    <span id="second"></span> 
+    <div>Seconds</div> 
+  </div> 
+</div>
+<p id="time_up"></p> 
+  
+<script>
+	var deadline = new Date("Oct 16, 2018 23:24:25").getTime(); 
+  
+	var x = setInterval(function() { 
+    	var now = new Date().getTime(); 
+    	var t = deadline - now; 
+
+        if(t > 0){
+        	var days = Math.floor(t / (1000 * 60 * 60 * 24)); 
+    		var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60)); 
+    		var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60)); 
+    		var seconds = Math.floor((t % (1000 * 60)) / 1000); 
+    
+    		document.getElementById("day").innerHTML = days ; 
+    		document.getElementById("hour").innerHTML = hours; 
+    		document.getElementById("minute").innerHTML = minutes;  
+    		document.getElementById("second").innerHTML = seconds;
+        }else{
+        	document.getElementById("time_up").innerHTML = "TIME UP"; 
+        	document.getElementById("day").innerHTML = '0'; 
+        	document.getElementById("hour").innerHTML = '0'; 
+        	document.getElementById("minute").innerHTML = '0' ;  
+        	document.getElementById("second").innerHTML = '0';
+        } 
+	}, 1000); 
+</script> 
+</body> 
+</html>
